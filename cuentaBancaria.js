@@ -16,7 +16,6 @@ function validarSaldo(montoTransferencia) {
     });
 }
 
-// Método para realizar transferencia
 function realizarTransferencia(montoTransferencia) {
     return new Promise((resolve, reject) => {
         console.log("Realizando transferencia...".yellow);
@@ -32,17 +31,23 @@ function realizarTransferencia(montoTransferencia) {
     });
 }
 
-validarSaldo(300)
-    .then((mensaje) => {
-        console.log(mensaje.green);
-        return realizarTransferencia(3000);
-    })
-    .then((mensaje) => {
-        console.log(mensaje.green);
-    })
-    .catch((error) => {
-        console.log(error.red);
-    })
-    .finally(() => {
-        console.log("Finalizó la operación bancaria".yellow);
-    });
+function ejecutarCuentaBancaria(montoTransferencia) {
+    validarSaldo(montoTransferencia)
+        .then((mensaje) => {
+            console.log(mensaje.green);
+            return realizarTransferencia(montoTransferencia);
+        })
+        .then((mensaje) => {
+            console.log(mensaje.green);
+        })
+        .catch((error) => {
+            console.log(error.red);
+        })
+        .finally(() => {
+            console.log("Finalizó la operación bancaria".yellow);
+        });
+}
+
+module.exports = {
+    ejecutarCuentaBancaria
+};

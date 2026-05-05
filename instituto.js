@@ -1,12 +1,5 @@
 const colors = require("colors");
 
-const alumno = {
-    nombre: "Facundo Berguerand",
-    edad: 24,
-    inscriptoAMaterias: ["Programación", "Base de Datos"],
-    debeCorrelativa: false
-};
-
 function validarCorrelativa(alumno) {
     return new Promise((resolve, reject) => {
         console.log("Validando correlativas...".yellow);
@@ -36,19 +29,25 @@ function inscribirMateria(alumno, materia) {
     });
 }
 
-validarCorrelativa(alumno)
-    .then((mensaje) => {
-        console.log(mensaje.green);
-        return inscribirMateria(alumno, "Programación II");
-    })
-    .then((mensaje) => {
-        console.log(mensaje.green);
-        console.log("Materias inscriptas:".yellow);
-        console.log(alumno.inscriptoAMaterias);
-    })
-    .catch((error) => {
-        console.log(error.red);
-    })
-    .finally(() => {
-        console.log("Finalizó la operación de inscripción".yellow);
-    });
+function ejecutarInstituto(alumno, materia) {
+    validarCorrelativa(alumno)
+        .then((mensaje) => {
+            console.log(mensaje.green);
+            return inscribirMateria(alumno, materia);
+        })
+        .then((mensaje) => {
+            console.log(mensaje.green);
+            console.log("Materias inscriptas:".yellow);
+            console.log(alumno.inscriptoAMaterias);
+        })
+        .catch((error) => {
+            console.log(error.red);
+        })
+        .finally(() => {
+            console.log("Finalizó la operación de inscripción".yellow);
+        });
+}
+
+module.exports = {
+    ejecutarInstituto
+};
