@@ -1,0 +1,1 @@
+console.log("Paquete personalizado inicializado correctamente");

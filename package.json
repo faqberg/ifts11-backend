@@ -1,0 +1,11 @@
+{
+  "name": "ejercicios-node-js",
+  "version": "1.0.0",
+  "description": "Ejercicios de Node y JavaScript",
+  "main": "miIndex.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Facundo Berguerand",
+  "license": "ISC"
+}
